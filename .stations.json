@@ -1,0 +1,19 @@
+{
+    "stations": [
+        {
+            "url": "http://somafm.com/defcon130.pls",
+            "name": "SomaFM - DEF CON Radio",
+            "keywords": ["defcon"]
+        },
+        {
+            "url": "http://somafm.com/cliqhop130.pls",
+            "name": "SomaFM - cliqhop idm",
+            "keywords": ["cliqhop", "idm"]
+        },
+        {
+            "url": "http://wbgo.streamguys.net/listen.pls",
+            "name": "WBGO",
+            "keywords": ["wbgo", "jazz"]
+        }
+    ]
+}

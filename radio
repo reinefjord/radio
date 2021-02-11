@@ -1,0 +1,28 @@
+#!/bin/bash
+
+matches=()
+while read -r line
+do
+  matches+=("$line")
+done < <(jq -r --arg kw "$1" '.stations[] | select(.keywords | contains([$kw])) | [.url,.name] | @tsv' ~/.stations.json)
+
+mlen="${#matches[@]}"
+if [[ "$mlen" -eq 0 ]]
+then
+  echo "no such station"
+  exit 1
+elif [[ "$mlen" -gt 1 ]]
+then
+  echo "multiple matches:"
+  for match in "${matches[@]}"
+  do
+    read -r url name <<< "$match"
+    echo "$name"
+  done
+  exit 1
+fi
+
+read -r url name <<< "${matches[0]}"
+
+echo "-> playing $name"
+mpv --cache-secs=5 "$url"
